@@ -1,8 +1,13 @@
 import React from 'react'
 import {Container,Button,Row,Col} from 'react-bootstrap'
 import TicketTable from '../../Components/TicketTable/TicketTable'
+import dummyTickets from '../../Assets/data/dummyTickets.json';
 
 function Dahboard() {
+  console.log(dummyTickets,'hi');
+  // const result =JSON.parse(JSON.stringify(dummyTickets));
+  // console.log(result,'result');
+
   return (
    <Container>
     <Row>
@@ -28,7 +33,7 @@ function Dahboard() {
     <hr/>
     <Row>
       {/* Table components renders here */}
-      <TicketTable/>
+      <TicketTable dummyTickets={dummyTickets}/>
     </Row>
    </Container>
   )
