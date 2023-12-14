@@ -7,7 +7,7 @@ import Dahboard from '../page/Dahboard/Dahboard'
 function DefaultLayout() {
   return (
     <div className='defaultLayout'>
-      <header>
+      <header className="mb-2">
       <HeaderComp/>
       </header>
      <main>

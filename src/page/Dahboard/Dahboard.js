@@ -2,6 +2,7 @@ import React from 'react'
 import {Container,Button,Row,Col} from 'react-bootstrap'
 import TicketTable from '../../Components/TicketTable/TicketTable'
 import dummyTickets from '../../Assets/data/dummyTickets.json';
+import BreadCrupm from '../../Components/BreadCrumb/BreadCrupm';
 
 function Dahboard() {
   console.log(dummyTickets,'hi');
@@ -10,6 +11,7 @@ function Dahboard() {
 
   return (
    <Container>
+    <Col> <BreadCrupm page={Dahboard}/></Col>
     <Row>
       <Col className='text-center mt-5 mb-2'>
       <Button variant='info' style={{fontSize:'2rem', padding:'10px 30px' }}>Add new Ticket</Button>
@@ -21,6 +23,7 @@ function Dahboard() {
       <div>Pending Tickets: 30</div>
       </Col>
     </Row>
+   
     <hr/>
     <Row>
       <Col className='mt-2'>

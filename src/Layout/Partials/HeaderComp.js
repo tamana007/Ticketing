@@ -5,7 +5,7 @@ import LOGO from "../../Assets/Images/LOGO.png";
 
 function HeaderComp() {
   return (
-    <Navbar collapseOnSelect bg="info" variant="dark" expand="md">
+    <Navbar collapseOnSelect bg="info" variant="dark" expand="md" >
       <Navbar.Brand>
         <img src={LOGO} alt="logo" style={{ width: "50px" }}></img>
       </Navbar.Brand>
