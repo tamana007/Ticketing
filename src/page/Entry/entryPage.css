@@ -1,0 +1,11 @@
+.entry-page{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* .login-heading{
+  align-items: center;
+  background-color: red;
+  justify-content: center;
+} */
