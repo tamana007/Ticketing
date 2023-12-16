@@ -11,9 +11,9 @@ function App() {
   return (
     <div>
       {/* <Entry/> */}
-   <DefaultLayout>
-   <Dahboard/>
-   </DefaultLayout>
+   <DefaultLayout> 
+      <Dahboard/>
+   </DefaultLayout> 
      
     </div>
   );

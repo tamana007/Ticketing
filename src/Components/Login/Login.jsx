@@ -10,7 +10,7 @@ function Login({ handleOnchange, email, password, setLoadForm, loadForm }) {
       return;
     }
     //API CODES GOES HERE
-    console.log("btn clicked");
+    // console.log("btn clicked");
   }
 
   return (

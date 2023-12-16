@@ -3,6 +3,7 @@ import {Container,Button,Row,Col} from 'react-bootstrap'
 import TicketTable from '../../Components/TicketTable/TicketTable'
 import dummyTickets from '../../Assets/data/dummyTickets.json';
 import BreadCrupm from '../../Components/BreadCrumb/BreadCrupm';
+import AddTicket from '../newTicket/AddTicket';
 
 function Dahboard() {
   console.log(dummyTickets,'hi');
@@ -30,13 +31,14 @@ function Dahboard() {
       <div>Recently Added Tickets:</div>
       </Col>
       <Col>
-      <input></input>
+      <input />
       </Col>
     </Row>
     <hr/>
     <Row>
       {/* Table components renders here */}
-      <TicketTable dummyTickets={dummyTickets}/>
+      {/* <TicketTable dummyTickets={dummyTickets}/> */}
+      <AddTicket/>
     </Row>
    </Container>
   )
