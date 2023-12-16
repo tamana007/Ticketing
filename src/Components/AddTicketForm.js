@@ -10,7 +10,7 @@ function AddTicketForm({handleOnsubmit,handleOnChange,subject,date,create,data,e
     <Container className="add-new-ticket">
       <Row>
         <Col>
-          <Container fluid className="text-light  text-center">
+          <Container fluid className=" text-light  text-center">
             <h1  className="text-info text-center" >Add a New Ticket</h1>
           </Container>
 

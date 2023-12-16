@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 
-function TicketTable({ dummyTickets }) {
+function TicketTable({ dummyTickets ,dummy}) {
   // console.log('dumy',dummyTickets);
+ 
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>Status</th>
           <th>Subject</th>
+          <th>Status</th>
           <th>AddedAt</th>
         
         </tr>
       </thead>
       <tbody>
-        {dummyTickets.length ? dummyTickets.map((ticket) => (
+        {dummy.length ? dummy.map((ticket) => (
           <tr key={ticket.id}>
             <td>{ticket.id}</td>
             <td>{ticket.subject}</td>

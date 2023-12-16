@@ -6,7 +6,7 @@ import BreadCrupm from '../../Components/BreadCrumb/BreadCrupm';
 import AddTicket from '../newTicket/AddTicket';
 
 function Dahboard() {
-  console.log(dummyTickets,'hi');
+  // console.log(dummyTickets,'hi');
   // const result =JSON.parse(JSON.stringify(dummyTickets));
   // console.log(result,'result');
 
@@ -37,8 +37,8 @@ function Dahboard() {
     <hr/>
     <Row>
       {/* Table components renders here */}
-      {/* <TicketTable dummyTickets={dummyTickets}/> */}
-      <AddTicket/>
+      <TicketTable dummyTickets={dummyTickets}/>
+      {/* <AddTicket/> */}
     </Row>
    </Container>
   )
