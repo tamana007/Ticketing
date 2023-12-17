@@ -1,0 +1,17 @@
+.message-history{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   /* background-color: orange; */
+   align-items: center;
+    /* box-shadow: 0px 0px 0px 1px rgb(85, 82, 82);  */
+   
+
+}
+.message{
+  padding: 1rem;
+  margin: 1rem;
+  width: 70%;
+  border: 1px solid rgb(211, 210, 205);
+  border-radius: 0.25rem;
+}

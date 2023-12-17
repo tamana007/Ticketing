@@ -8,6 +8,8 @@ import Dahboard from './page/Dahboard/Dahboard';
 import AddTicket from './page/newTicket/AddTicket';
 import TicketListing from './page/TicketListing/TicketListing';
 import SearchForm from './Components/SearchForm/SearchForm';
+import Ticket from './page/Ticket/Ticket';
+import MessageHistory from './Components/MessageHistory/MessageHistory';
 
 
 function App() {
@@ -17,8 +19,11 @@ function App() {
    <DefaultLayout> 
       {/* <Dahboard/> */}
       {/* <AddTicket/> */}
-      <TicketListing/>
+      {/* <TicketListing/> */}
       {/* <SearchForm></SearchForm> */}
+      <Ticket/>
+      {/* <MessageHistory></MessageHistory> */}
+      
    </DefaultLayout> 
      
     </div>
