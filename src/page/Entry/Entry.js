@@ -6,11 +6,13 @@ import { Container } from "react-bootstrap";
 import Login from "../../Components/Login/Login";
 import ResetPassword from '../../Components/ResetPassword/ResetPassword'
 // import {entryPage} from './'
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 function Entry() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState([]);
   const [loadForm,setLoadForm]=useState(true)
+
 
   const handleOnchange=(e)=>{
     console.log('e',e);

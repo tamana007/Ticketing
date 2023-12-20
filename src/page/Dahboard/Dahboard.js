@@ -37,7 +37,7 @@ function Dahboard() {
     <hr/>
     <Row>
       {/* Table components renders here */}
-      <TicketTable dummyTickets={dummyTickets}/>
+      <TicketTable dummy={dummyTickets}/>
       {/* <AddTicket/> */}
     </Row>
    </Container>

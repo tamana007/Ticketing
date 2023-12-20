@@ -2,6 +2,7 @@ import React, { Children } from "react";
 // import Header from './Partials'
 import HeaderComp from "./Partials/HeaderComp";
 import FooterComp from "./Partials/FooterComp";
+import { Outlet } from "react-router-dom";
 // import Dahboard from "../page/Dahboard/Dahboard";
 
 function DefaultLayout({ children }) {
@@ -10,8 +11,9 @@ function DefaultLayout({ children }) {
       <header className="mb-2">
         <HeaderComp />
       </header>
+
       <main>
-        {children}
+        <Outlet/>
       </main>
 
       <footer>
