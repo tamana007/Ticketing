@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
+// import { Link } from "react-router-bootstrap";
+import { Link } from 'react-router-dom'
 
 function TicketTable({ dummyTickets ,dummy}) {
   // console.log('dumy',dummyTickets);
  
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover >
       <thead>
         <tr>
           <th>#</th>
@@ -19,7 +21,10 @@ function TicketTable({ dummyTickets ,dummy}) {
         {dummy.length ? dummy.map((ticket) => (
           <tr key={ticket.id}>
             <td>{ticket.id}</td>
-            <td>{ticket.subject}</td>
+            {/* When I click In subject it navigates to to desied path  */}
+            <td>
+             <Link id={ticket.id} to={`/ticket/${ticket.id}`}>{ticket.subject}</Link>
+              </td>
             <td>{ticket.status}</td>
             <td>{ticket.addedAt}</td>
           </tr>

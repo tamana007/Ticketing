@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Row, Form } from "react-bootstrap";
 import { shortTex } from "../utils/validation";
+import { LinkContainer } from "react-router-bootstrap";
 // import {'addTicke'}
 import './ticket.css';
 
@@ -73,7 +74,7 @@ function AddTicketForm({handleOnsubmit,handleOnChange,subject,date,create,data,e
               /></Col>
              
             </Form.Group>
-
+<LinkContainer to="../dashboard">
             <Button
               style={{ margin: "10px 0px" }}
               type='submit'
@@ -82,6 +83,7 @@ function AddTicketForm({handleOnsubmit,handleOnChange,subject,date,create,data,e
             >
               Add
             </Button>
+            </LinkContainer>
           </Form>
           <hr />
         </Col>

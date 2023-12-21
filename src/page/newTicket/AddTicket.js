@@ -22,7 +22,7 @@ function AddTicket() {
     // console.log('hi');
     const {name,value}=e.target;
     setData((prev)=>({...prev,[name]:value}))
-    console.log('data',data);
+    // console.log('data',data);
     
 
   

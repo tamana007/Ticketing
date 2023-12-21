@@ -18,14 +18,15 @@ function App() {
   return (
     <Router>
       <Routes>
+      <Route path="/" index element={<Entry />} />
         <Route element={<DefaultLayout />}>
-          <Route path="/" index element={<Entry />} />
+        <Route path="add-ticket" element={<AddTicket />} />
           <Route path="dashboard" element={<Dashboard />}></Route>
           <Route element={<ProtectedRoute />}>
-            <Route path="add-ticket" element={<AddTicket />} />
+           
             <Route path="tickets" element={<TicketListing />} />
             <Route path="search-form" element={<SearchForm />} />
-            <Route path="ticket" element={<Ticket />} />
+            <Route path="ticket/:tid" element={<Ticket />} />
             <Route path="message-history" element={<MessageHistory />} />
           </Route>
         </Route>

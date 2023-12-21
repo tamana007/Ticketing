@@ -12,7 +12,9 @@ function MessageHistory({ message, sender }) {
             <div>
               
                 <div className="send font-weight-bold text-secondary">
+                  
                 <div key={i} className="message-history">
+                  
                   <div className="sender">{msg.sender}</div>
                   <div className="message">{msg.message}</div>
                 </div>

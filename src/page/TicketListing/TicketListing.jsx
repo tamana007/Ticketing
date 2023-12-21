@@ -5,6 +5,7 @@ import SearchForm from '../../Components/SearchForm/SearchForm'
 // import AddTicket from '../newTicket/AddTicket';
 import dummyTickets from '../../Assets/data/dummyTickets.json';
 import TicketTable from '../../Components/TicketTable/TicketTable'
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 
@@ -44,7 +45,9 @@ function TicketListing() {
 </Row>
 <Row>
   <Col>
+  <LinkContainer to="../add-ticket">
   <Button variant='info' className='mt-4'>Add New Ticket</Button>
+  </LinkContainer>
   </Col>
   <Col className='text-right'>  
     <SearchForm str={str}handleOnchange={handleOnchange}/>
