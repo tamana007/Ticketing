@@ -34,5 +34,5 @@ required:true
 })
 
 module.exports={
-  UserSchema:mongoose.model('User',UserSchema)
+  UserSchema:mongoose.model('UserCollection',UserSchema)
 }

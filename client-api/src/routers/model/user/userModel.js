@@ -1,26 +1,30 @@
 const {UserSchema}=require('./UserSchema.js')
 
-const insertUser=(userObj)=>{
-  UserSchema(userObj).save().then ((data)=>console.log(data))
-  .catch((error)=>console.log(error))
-}
-module.export={
+// const insertUser= (userObj)=>{
+//   UserSchema(userObj).save().then ((data)=> console.log(data))
+//   .catch((error)=>console.log(error))
+  //:::::::::::::::::::::::::::::
+
+  const insertUser=async(userObj)=>{
+    try{
+      const user=await UserSchema(userObj).save();
+console.log(user);
+return user;
+    }
+    catch (err){
+console.log(err);
+    }
+  }
+
+
+
+
+
+
+
+
+
+module.exports={
   insertUser,
 }
-//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-// const { UserSchema } = require('./UserSchema.js');
-// const mongoose = require('mongoose');
-
-// // Create a User model using the UserSchema
-// const User = mongoose.model('User', UserSchema);
-
-// module.exports = User;
-
-
-// const { UserSchema } = require('./UserSchema.js');
-// const mongoose = require('mongoose');
-
-// // Create a User model using the UserSchema
-// const User = mongoose.model('User', UserSchema);
-
-// module.exports = User;    
+   
