@@ -34,19 +34,16 @@ router.post("/", async (req, res, next) => {
     res.json({ status: "error", message: err.message });
   }
 
+  
+
   //db:
 });
+router.post('/login',(req,res)=>{
+  res.json({status:"success",message:"Logged in successfully"})
+
+})
 
 
-// router.post('/',async(req,res,next)=>{
-//   const result = await insertUser(req.body);
-//   console.log(result);
-//   // const requestData = req.body;
 
-//   //db:
-
-//   res.json({message:"New user created", user: result})
-//   next();
-// })
 
 module.exports = router;

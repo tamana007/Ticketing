@@ -1,0 +1,12 @@
+### user endpoint
+POST http://localhost:5000/v1/user
+Content-Type: application/json
+
+{
+    "Name":"samad",
+    "password":"Sheshak",
+    "Company":"Software3",
+    "Address":"Richmond3",
+    "Phone":"7788882",
+    "email":"jksj3@gmail.com"
+}
