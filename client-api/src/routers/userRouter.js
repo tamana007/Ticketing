@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 // const {insertUser}=require('./model/user/userModel')
-const { insertUser } = require("./model/user/userModel");
+const { insertUser,getUserByEmail } = require("./model/user/userModel");
 const User = require("./model/user/userModel");
-const { letBcrypt } = require("../helpers/bcryptHelper");
+const { letBcrypt,comparePasswords } = require("../helpers/bcryptHelper");
 
 router.all("/", (req, res, next) => {
   // const requestData = req.body;
@@ -38,8 +38,30 @@ router.post("/", async (req, res, next) => {
 
   //db:
 });
-router.post('/login',(req,res)=>{
-  res.json({status:"success",message:"Logged in successfully"})
+router.post('/login',async (req,res)=>{
+  //If user name and password not available: Invalaid user name and password
+  const {email,password}=req.body;
+  if (!email || !password){
+
+res.json({status: 'error',message:"Invalaid Form submission"})
+  }
+  
+  const user=await getUserByEmail(email)
+  console.log(user,'user');
+
+  const passFromDb=user?._id ? user?.password: null;
+
+
+  const result=await comparePasswords(password,passFromDb)
+  console.log(password,'paswd ');
+
+  if(passFromDb){
+    res.json({status:"success",message:"Logged in successfully"})
+
+  }
+  else{
+    res.json({message:"does not exist"})
+  }
 
 })
 

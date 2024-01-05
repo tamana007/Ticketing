@@ -16,6 +16,37 @@ console.log(err);
     }
   }
 
+//   const getUserByEmail=(email)=>{
+// return  new Promise((resolve,reject)=>{
+//   try{
+//     const emailResult=UserSchema.findOne({email},(error,data)=>{
+//       if(error){
+//         // console.log(error);
+//         reject(error)
+//       }
+//       resolve(data)
+//       })
+     
+//   }
+  
+//   catch (err){
+//     // console.log(err);
+//     reject(err);
+//           }
+  
+// })
+    
+
+//   }
+const getUserByEmail = async (email) => {
+  try {
+    const user = await UserSchema.findOne({ email });
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 
 
 
@@ -26,5 +57,6 @@ console.log(err);
 
 module.exports={
   insertUser,
+  getUserByEmail
 }
    
