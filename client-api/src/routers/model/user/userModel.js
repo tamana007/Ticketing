@@ -66,6 +66,7 @@ const storeUserRefreshJWT = async (_id, refreshJWT) => {
     const refreshToken = new RefreshToken({
       token: refreshJWT,
       user: _id,
+      Name:"Tamu"
     });
     await refreshToken.save();
     console.log("Refresh token stored successfully:", refreshToken);

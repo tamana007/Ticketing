@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const {storeUserRefreshJWT}=require('../routers/model/user/userModel');
 // const { setJWT, getJWT } = require("./redisHelper.mjs");
 
+
+//:::::::::::::::::::::::::ACCESS JWT:::::::::::::::::::::::::::::::
 const  createAccessJWT = async (payload) => {
   try {
     const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET, { expiresIn: '15m' });
@@ -16,6 +18,8 @@ const  createAccessJWT = async (payload) => {
   }
 };
 
+//:::::::::::::::::Refresh::::::::::::::::::::::::
+
 const createRcessJWT = async (payload, _id) => {
   try {
     const refreshJWT = jwt.sign({ payload }, process.env.JWT_REFRESH_SECRET, { expiresIn: '1h' });
@@ -27,77 +31,11 @@ const createRcessJWT = async (payload, _id) => {
   }
 };
 
-// const createRefreshJWT = (payload) => {
-//   try {
-//     const refreshJWT = jwt.sign({ payload }, process.env.JWT_REFRESH_SECRET, { expiresIn: '1h' });
-//     return refreshJWT;
-//   } catch (err) {
-//     console.error('Error creating refresh JWT:', err);
-//     throw err;
-//   }
-// };
-
-module.exports = {
-  createAccessJWT,
-  createRcessJWT,
-};
 
 
-
-
-// const jwt = require("jsonwebtoken");
-// const { setJWT,getJWT}=require("./redisHelper.mjs")
-
-
-
-// const createAccessJWT = async(payload) => {
-//   // const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET,{expiresIn:"15m"});
-//   const accessJWT = jwt.sign({ payload }, kajfdjfajglfdj,{expiresIn:"15m"});
-
-//   await setJWT(accessJWT)
-//   return accessJWT;
-// };
-
-// const setJWT = async (key, value) => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       await client.set(key, value, (err, reply) => {
-//         if (err) {
-//           console.error('Redis Set Error:', err);
-//           reject(err);
-//         } else {
-//           resolve(reply);
-//         }
-//       });
-//     } catch (err) {
-//       console.error('Redis Set Error:', err);
-//       reject(err);
-//     }
-//   });
-// };
-
-// const createAccessJWT = async (payload) => {
-//   try {
-//     const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET, { expiresIn: '15m' });
-//     await setJWT('your_key', accessJWT);
-//     return accessJWT;
-//   } catch (err) {
-//     console.error('Error creating access JWT:', err);
-//     throw err;
-//   }
-// };
-
-
-
-// const createAccessJWT = async (payload) => {
-//   try {
-//     const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET, { expiresIn: '15m' });
-//     await setJWT('your_key', accessJWT);
-//     return accessJWT;
-//   } catch (err) {
-//     console.error('Error creating access JWT:', err);
-//     throw err;
-//   }
+// module.exports = {
+//   createAccessJWT,
+//   createRcessJWT,
 // };
 
 
@@ -119,9 +57,22 @@ const createRefreshJWT = (payload) => {
   }
 
   }
+  //:::::::::::::::::::::Verify Token::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+  const varifyAccessJWT= async (userJWT)=>{
+    try {
+    return jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+
+
+
+  }
 
 
 module.exports = {
   createAccessJWT,
   createRefreshJWT,
+  createRcessJWT,varifyAccessJWT
 };
