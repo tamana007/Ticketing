@@ -22,7 +22,7 @@ const  createAccessJWT = async (payload) => {
 
 const createRcessJWT = async (payload, _id) => {
   try {
-    const refreshJWT = jwt.sign({ payload }, process.env.JWT_REFRESH_SECRET, { expiresIn: '1h' });
+    const refreshJWT = jwt.sign({ payload }, process.env.JWT_REFRESH_SECRET, { expiresIn: '1y' });
     await storeUserRefreshJWT(_id, refreshJWT); // Store the refresh JWT in MongoDB
     return refreshJWT;
   } catch (err) {
@@ -46,7 +46,7 @@ const createRefreshJWT = (payload) => {
         payload,
       },
       process.env.JWT_REFRESH_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1y" }
     );
   
     return Promise.resolve(accessJWT) ;
@@ -57,9 +57,21 @@ const createRefreshJWT = (payload) => {
   }
 
   }
-  //:::::::::::::::::::::Verify Token::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  //:::::::::::::::::::::Verify ACCESS Token::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
   const varifyAccessJWT= async (userJWT)=>{
+    try {
+    return jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET)
+    } catch (error) {
+      return Promise.reject(error)
+    }
+
+
+
+  }
+  //::::::::::::::::::::::::::VERIFY REFRESH TOKEN::::::::::::::::::::::::::::::::::::::::::::::::
+
+  const varifyRefreshJWT= async (userJWT)=>{
     try {
     return jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET)
     } catch (error) {
@@ -74,5 +86,5 @@ const createRefreshJWT = (payload) => {
 module.exports = {
   createAccessJWT,
   createRefreshJWT,
-  createRcessJWT,varifyAccessJWT
+  createRcessJWT,varifyAccessJWT,varifyRefreshJWT
 };
