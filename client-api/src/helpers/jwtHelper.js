@@ -8,7 +8,7 @@ const {storeUserRefreshJWT}=require('../routers/model/user/userModel');
 //:::::::::::::::::::::::::ACCESS JWT:::::::::::::::::::::::::::::::
 const  createAccessJWT = async (payload) => {
   try {
-    const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET, { expiresIn: '15m' });
+    const accessJWT = jwt.sign({ payload }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1h' });
     console.log('jwt-aces-secret',accessJWT);
     // await setJWT(accessJWT);
     return accessJWT;

@@ -48,15 +48,17 @@ app.use("/v1/user", userRouter);
 app.use(
   "/v1/ticket",
   (req, res, next) => {
-    if (typeof req.query.name === "undefined") {
-      const error = new Error("Query parameter 'name' is undefined");
-      error.status = 400; // Bad Request
-      errorHandler(error, res);
-    } else {
+    // if (typeof req.query.name === "undefined") {
+    //   const error = new Error("Query parameter 'name' is undefined");
+    //   error.status = 400; // Bad Request
+    //   errorHandler(error, res);
+    // } else {
+      // }
+
+      console.log("I am currently on first middleware!...")
       next();
-    }
   },
-  ticketRouter
+  ticketRouter,
 );
 
 app.use(errorHandler);
