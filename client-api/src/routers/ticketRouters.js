@@ -6,7 +6,7 @@ const {
 const router = express.Router();
 const {
   createticket,
-  getAllTickets,getTicketById,
+  getAllTickets,getTicketById,getTicketbyDept,
 } = require("./model/ticket/createTicket/createTicketModel");
 
 //Used to load middleware functions at a path ("/") for all HTTP request methods.
@@ -68,12 +68,13 @@ router.get("/fetchTickets", adminAuthorization, async (req, res, next) => {
 //.........................Ready Ticket By user...............................
 router.get("/ticketCreator", adminAuthorization, async (req, res)=>{
   try {                       
-    console.log('user id', req.id);
+    // console.log('user id', req.id);
     const userId = req.id;
     const result = await getTicketById(userId);
 
     // res.json(result.map(ticket=>ticket._id));
     if(result) 
+    console.log('log result',result);
     {return res.json({status: "success", result});}
   
     res.json({status: "success", message: "This user has no ticket"})
@@ -83,8 +84,14 @@ router.get("/ticketCreator", adminAuthorization, async (req, res)=>{
   }
 })
 
-//
+//......................Read Ticket by creatorDepartment.........
+router.get('/departmentTickets',async(req,res)=>{
+  console.log('response comes here..............',req.body,'ends here ..................');
+  const department=req.body.department;
+  const fetchDept=await getTicketbyDept(department)
+  res.json({message:"Fetched department Tickets",fetchDept})
 
+})
 
 //:::::::::::::::::::::::UPDATE TICKET:::::::::::::::::::::::::::::::::::::::
 

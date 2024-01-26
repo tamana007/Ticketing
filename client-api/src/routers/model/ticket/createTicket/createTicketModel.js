@@ -30,16 +30,9 @@ const getAllTickets = async () => {
     throw error;
   }
 };
-//Function to fetch tickets by id 
+//Function to fetch tickets by spesific user
 const getTicketById=async(clientId)=>{
-//   try{
-//     const ticketById=await createTicketSchema.findOne({Name:clientName})
-// return getTicketById;
-//   }
-//   catch(error){
-//     throw error;
 
-//   }
 try {
   //find who is logged in
   console.log('clientId',clientId)
@@ -61,7 +54,13 @@ catch (error) {
 
 }
 
-//
+//Function to Get all tickets from specific department
+const getTicketbyDept=(dept)=>{
+  const department=createTicketSchema.find({department:dept})
+  return department;
 
-module.exports={createticket,getAllTickets,getTicketById}
+}
+
+
+module.exports={createticket,getAllTickets,getTicketById,getTicketbyDept}
 

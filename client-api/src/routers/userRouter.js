@@ -74,7 +74,7 @@ router.post("/login", async (req, res) => {
   }
 
   const user = await getUserByEmail(email);
-  console.log("user isADmin", user.isAdmin);
+  // console.log("user isADmin", user.isAdmin);
 
   const passFromDb = user?._id ? user?.password : null;
   console.log(user?.password, "user_Paswrd");
