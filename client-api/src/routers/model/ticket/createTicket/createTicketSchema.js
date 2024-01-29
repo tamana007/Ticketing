@@ -31,6 +31,10 @@ const createTicketSchema=new mongoose.Schema({
     type: String,
     // required: true  // This field is required
   },
+  status: {
+    type: String,
+    // required: true  // This field is required
+  },
 });
 // module.exports={"createTicketSchema":createTicketSchema};
 module.exports = {
