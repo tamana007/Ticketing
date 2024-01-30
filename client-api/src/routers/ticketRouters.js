@@ -10,7 +10,10 @@ const {
   getTicketById,
   getTicketbyDept,
   getTicketbyStatus,
+  fetchbyParam,
 } = require("./model/ticket/createTicket/createTicketModel");
+
+const { addTicket } = require("./model/ticket/ticket/ticketModel");
 
 //Used to load middleware functions at a path ("/") for all HTTP request methods.
 router.all("/", (req, res, next) => {
@@ -70,7 +73,7 @@ router.get("/fetchTickets", adminAuthorization, async (req, res, next) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-//.........................Ready Ticket By user...............................
+//.........................Read Ticket By user...............................
 router.get("/ticketCreator", adminAuthorization, async (req, res) => {
   try {
     const userId = req.id;
@@ -104,7 +107,7 @@ router.get("/fetchbyStatus", adminAuthorization, async (req, res, next) => {
   const status = req.body.status;
   const department = req.body.department;
 
-  console.log("status from status route:", req.body.status);
+  // console.log("status from status route:", req.body.status);
   try {
     const result = await getTicketbyStatus(status, department);
 
@@ -113,8 +116,41 @@ router.get("/fetchbyStatus", adminAuthorization, async (req, res, next) => {
     res.status(200).json({ message: "There is not open TT exist", error });
   }
 });
-//...........Fetch for specific user by userId (Using Req.Params) ...........
 
+//.......Fetch for specific user by userId (Using Req.Params) ...........
+router.get("/fetchbyId/:userId", async (req, res, next) => {
+  try {
+    const mid = req.params.userId; // Use req.params.userId directly
+    const getbyPara = await fetchbyParam(mid);
+
+    if (getbyPara) return res.json({ status: "success", getbyPara });
+    res.json({
+      status: "success",
+      message: "This specific ticket is not in the user's list.",
+    });
+  } catch (error) {
+    res.json({ status: "error", message: error.message });
+  }
+});
+//.....................ADD TT for my system............
+router.post("/addTT", async (req, res, nex) => {
+  try {
+    // console.log('add ticket------',addTicket);
+    const { subject, status,openedAt,conversation } = req.body;
+    const ticketInfo = {
+      subject,
+      status,
+      openedAt,
+      conversation,
+      
+    };
+    const result = await addTicket(ticketInfo);
+    console.log('result for my ticket',result);
+    res.json({ message: "done",result });
+  } catch (error) {
+    res.json({ message: "err", error });
+  }
+});
 
 //:::::::::::::::::::::::UPDATE TICKET:::::::::::::::::::::::::::::::::::::::
 

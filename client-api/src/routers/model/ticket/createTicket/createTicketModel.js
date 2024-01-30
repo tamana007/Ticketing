@@ -11,7 +11,7 @@ const { UserSchema } = require("../../user/UserSchema.js");
 const createticket = (ticketObject) => {
   try {
     const savedTicket = createTicketSchema(ticketObject).save();
-    console.log("ticket saved", savedTicket);
+    // console.log("ticket saved", savedTicket);
     return savedTicket;
   } catch (error) {
     console.log(error);
@@ -62,11 +62,17 @@ const ticketStatus=createTicketSchema.find({status:status,department:dept})
 return ticketStatus;
 }
 //Function to fetch tickets by userId
+const fetchbyParam=(id)=>{
+  const result=createTicketSchema.find({_id:id});
+  return result;
+
+}
 
 module.exports = {
   createticket,
   getAllTickets,
   getTicketById,
   getTicketbyDept,
-  getTicketbyStatus
+  getTicketbyStatus,
+  fetchbyParam,
 };
