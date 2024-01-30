@@ -13,7 +13,7 @@ const {
   fetchbyParam,
 } = require("./model/ticket/createTicket/createTicketModel");
 
-const { addTicket } = require("./model/ticket/ticket/ticketModel");
+const { addTicket,readTT, } = require("./model/ticket/ticket/ticketModel");
 
 //Used to load middleware functions at a path ("/") for all HTTP request methods.
 router.all("/", (req, res, next) => {
@@ -132,25 +132,40 @@ router.get("/fetchbyId/:userId", async (req, res, next) => {
     res.json({ status: "error", message: error.message });
   }
 });
+
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //.....................ADD TT for my system............
 router.post("/addTT", async (req, res, nex) => {
   try {
     // console.log('add ticket------',addTicket);
-    const { subject, status,openedAt,conversation } = req.body;
+    const { subject, status, openedAt, conversation } = req.body;
     const ticketInfo = {
       subject,
       status,
       openedAt,
       conversation,
-      
     };
     const result = await addTicket(ticketInfo);
-    console.log('result for my ticket',result);
-    res.json({ message: "done",result });
+    console.log("result for my ticket", result);
+    res.json({ message: "done", result });
   } catch (error) {
     res.json({ message: "err", error });
   }
 });
+
+//........Get Tickets.......................
+router.get('/readTT',async(req,res,next)=>{
+  const mystatus = req.body.stastus;
+  
+  console.log('Status',mystatus);
+  
+  const getTT= await readTT(mystatus)
+  res.json({message:"success",getTT})
+  console.log('Get TT',getTT);
+
+
+})
 
 //:::::::::::::::::::::::UPDATE TICKET:::::::::::::::::::::::::::::::::::::::
 
