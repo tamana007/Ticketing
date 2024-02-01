@@ -12,20 +12,7 @@ const addTicket = (ticket) => {
     return error;
   }
 };
-//Function to read TT
 
-// const readTT=useObj=>{
-//   try {
-//     return new Promise(resolve,reject)=>{
-//       const retrieve=MyTicketSchema.find (useObj);
-//       resolve(retrieve) ;
-//     }
-   
-//   } catch (error) {
-//     reject(error) ;
-//   }
- 
-// }
 const readTT =  (useObj) => {
   try {
     const retrieve = MyTicketSchema.find({status:useObj});
@@ -36,14 +23,36 @@ const readTT =  (useObj) => {
   }
 };
 
-// const readTT = useObj => {
-//   return new Promise((resolve, reject) => {
-//     try {
-//       const retrieve = MyTicketSchema.find({status:useObj});
-//       resolve(retrieve);
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// };
-module.exports = { addTicket,readTT, };
+// Update TT function
+const updateTT = async (id, conversationIndex, message, status) => {
+  try {
+    const updateKeyMessage = `conversation.${conversationIndex}.message`;
+    // const updateKeyStatus = `status`;
+    const result = await MyTicketSchema.findByIdAndUpdate(
+      id,
+      {
+        [updateKeyMessage]: message,
+        status: status,
+      },
+      { new: true }
+    );
+    return result;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+//Delete TT Function
+const deleteTT=(id)=>{
+  try {
+  const del=MyTicketSchema.deleteOne(id)
+  return del;
+    
+  } catch (error) {
+    throw new Error(error.message);
+    
+  }
+
+}
+
+module.exports = { addTicket,readTT,updateTT,deleteTT };
